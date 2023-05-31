@@ -107,9 +107,9 @@ def get_dollar_estimate(area, bathrooms, stories, parking, mainroad, guestroom, 
     log_estimate, upper, lower, confidence = get_log_estimate(area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence)
 
     #convert from log
-    dollar_estimate=np.e**log_estimate
-    dollar_high=np.e**upper
-    dollar_low=np.e**lower
+    dollar_estimate=np.e**log_estimate / 10
+    dollar_high=np.e**upper / 10
+    dollar_low=np.e**lower / 10
 
     #round to nearest thousand
     rounded_estimate=np.around(dollar_estimate, -3)
