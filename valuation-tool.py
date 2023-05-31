@@ -100,8 +100,8 @@ def get_log_estimate(area, bathrooms, stories, parking, mainroad=True, guestroom
 	
 	
 
-def get_dollar_estimate(area, bathrooms, stories, parking, mainroad=True, guestroom=False, basement=True, 
-                        hotwater=True, aircondition=True, prefarea=False, high_confidence=True):
+def get_dollar_estimate(area, bathrooms, stories, parking, mainroad, guestroom, basement, 
+                        hotwater, aircondition, prefarea, high_confidence):
     
     
     log_estimate, upper, lower, confidence = get_log_estimate(area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence)
@@ -115,6 +115,11 @@ def get_dollar_estimate(area, bathrooms, stories, parking, mainroad=True, guestr
     rounded_estimate=np.around(dollar_estimate, -3)
     rounded_high=np.around(dollar_high, -3)
     rounded_low=np.around(dollar_low, -3)
+
+    if high_confidence==True:
+        confidence=95
+    else:
+        confidence=68
 
     prediction=f'The estimated property value is {rounded_estimate}.\n At {confidence}% confidence the valuation range is\n USD {rounded_low} at the low end to USD {rounded_high} at the high end.'
 
