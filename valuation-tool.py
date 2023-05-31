@@ -159,4 +159,4 @@ st.subheader('User Input Parameters')
 st.write(input_df)
 
 st.subheader('Prediction')
-st.write(get_dollar_estimate(user_input_features()))
+#st.write(get_dollar_estimate(user_input_features()))
