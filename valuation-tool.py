@@ -116,9 +116,7 @@ def get_dollar_estimate(area, bathrooms, stories, parking, mainroad=True, guestr
     rounded_high=np.around(dollar_high, -3)
     rounded_low=np.around(dollar_low, -3)
 
-    print(f'The estimated property value is {rounded_estimate}.')
-    print(f'At {confidence}% confidence the valuation range is')
-    print(f'USD {rounded_low} at the low end to USD {rounded_high} at the high end.')
+    return print(f'The estimated property value is {rounded_estimate}.\n At {confidence}% confidence the valuation range is\n USD {rounded_low} at the low end to USD {rounded_high} at the high end.')
 
 
 #print(get_dollar_estimate(3000, 3, 3, 2))
@@ -166,7 +164,7 @@ aircondition=df[8]
 prefarea=df[9]
 high_confidence=df[10]
 
-
+#get_dollar_estimate(area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence)
 
 st.subheader('User Input Parameters')
 st.write()
