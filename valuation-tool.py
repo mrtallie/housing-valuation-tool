@@ -158,22 +158,19 @@ def user_input_features():
     input_df= pd.DataFrame(data, index=[0])
     return area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence
 
-if st.sidebar.button('calculate'):
-    df=user_input_features()
-    area=df[0]
-    bathrooms=df[1]
-    stories=df[2]
-    parking=df[3]
-    mainroad=df[4]
-    guestroom=df[5]
-    basement=df[6]
-    hotwater=df[7]
-    aircondition=df[8]
-    prefarea=df[9]
-    high_confidence=df[10]
 
-
-
+df=user_input_features()
+area=df[0]
+bathrooms=df[1]
+stories=df[2]
+parking=df[3]
+mainroad=df[4]
+guestroom=df[5]
+basement=df[6]
+hotwater=df[7]
+aircondition=df[8]
+prefarea=df[9]
+high_confidence=df[10]
 
 #prediction=get_dollar_estimate(area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence)
 
