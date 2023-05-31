@@ -172,6 +172,6 @@ st.subheader('User Input Parameters')
 st.write()
 
 st.subheader('Prediction')
-st.write(print(get_dollar_estimate(area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence)))
+st.write((get_dollar_estimate(area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence)))
 
 #print(aircondition)
