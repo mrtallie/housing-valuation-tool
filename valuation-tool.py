@@ -121,7 +121,7 @@ def get_dollar_estimate(area, bathrooms, stories, parking, mainroad=True, guestr
     print(f'USD {rounded_low} at the low end to USD {rounded_high} at the high end.')
 
 
-print(get_dollar_estimate(3000, 3, 3, 2))
+#print(get_dollar_estimate(3000, 3, 3, 2))
 
 st.title('House valuation tool')
 
@@ -154,9 +154,22 @@ def user_input_features():
     return area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence
 
 df=user_input_features()
+area=df[0]
+bathrooms=df[1]
+stories=df[2]
+parking=df[3]
+mainroad=df[4]
+guestroom=df[5]
+basement=df[6]
+hotwater=df[7]
+aircondition=df[8]
+prefarea=df[9]
+high_confidence=df[10]
+
+
 
 st.subheader('User Input Parameters')
-st.write(user_input_features())
+st.write()
 
 st.subheader('Prediction')
-#st.write(get_dollar_estimate(user_input_features()))
+st.write(get_dollar_estimate(area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence))
