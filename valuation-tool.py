@@ -3,6 +3,8 @@ from sklearn.metrics import mean_squared_error
 from sklearn.linear_model import LinearRegression
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+import streamlit as st
+
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -120,3 +122,5 @@ def get_dollar_estimate(area, bathrooms, stories, parking, mainroad=True, guestr
 
 
 print(get_dollar_estimate(3000, 3, 3, 2))
+
+st.title('House valuation tool')
