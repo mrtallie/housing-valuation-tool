@@ -124,3 +124,19 @@ def get_dollar_estimate(area, bathrooms, stories, parking, mainroad=True, guestr
 print(get_dollar_estimate(3000, 3, 3, 2))
 
 st.title('House valuation tool')
+
+st.sidebar.header('User Input Parameters')
+
+def user_input_features():
+    area=st.sidebar.slider('area', 1650, 16200, 7275)
+    bathrooms=st.sidebar.slider('1, 4, 2')
+    stories=st.sidebar.slider('1, 4, 2')
+    parking=st.sidebar.slider('0, 3, 1')
+    mainroad=st.sidebar.slider('True, False')
+    guestroom=st.sidebar.slider('True, False')
+    basement=st.sidebar.slider('True, False')
+    hotwater=st.sidebar.slider('True, False')
+    aircondition=st.sidebar.slider('True, False')
+    prefarea=st.sidebar.slider('True, False')
+    high_confidence=st.sidebar.slider('True, False')
+
