@@ -158,6 +158,10 @@ def user_input_features():
     input_df= pd.DataFrame(data, index=[0])
     return area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence
 
+if st.sidebar.button('calculate'):
+    user_input_features()
+
+
 df=user_input_features()
 area=df[0]
 bathrooms=df[1]
