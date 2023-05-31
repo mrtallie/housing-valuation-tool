@@ -132,13 +132,13 @@ def user_input_features():
     bathrooms=st.sidebar.slider('bathrooms', 1, 4, 2)
     stories=st.sidebar.slider('stories',1, 4, 2)
     parking=st.sidebar.slider('parking', 0, 3, 1)
-    mainroad=st.sidebar.slider('mainroad', True, False, True)
-    guestroom=st.sidebar.slider('guestroom', True, False, True)
-    basement=st.sidebar.slider('basement', True, False, True)
-    hotwater=st.sidebar.slider('hotwater', True, False, True)
-    aircondition=st.sidebar.slider('aircondition', True, False, True)
-    prefarea=st.sidebar.slider('prefarea', True, False, True)
-    high_confidence=st.sidebar.slider('high_confidence', True, False, True)
+    mainroad=st.sidebar.select_slider('mainroad', True, False, True)
+    guestroom=st.sidebar.select_slider('guestroom', True, False, True)
+    basement=st.sidebar.select_slider('basement', True, False, True)
+    hotwater=st.sidebar.select_slider('hotwater', True, False, True)
+    aircondition=st.sidebar.select_slider('aircondition', True, False, True)
+    prefarea=st.sidebar.select_slider('prefarea', True, False, True)
+    high_confidence=st.sidebar.select_slider('high_confidence', True, False, True)
     input_data = {'area':area,
                   'bathrooms':bathrooms,
                   'stories':stories,
