@@ -139,12 +139,24 @@ def user_input_features():
     aircondition=st.sidebar.select_slider('aircondition', options=['True', 'False'])
     prefarea=st.sidebar.select_slider('prefarea', options=['True', 'False'])
     high_confidence=st.sidebar.select_slider('high_confidence', options=['True', 'False'])
+    input_data = {'area':area,
+                  'bathrooms':bathrooms,
+                  'stories':stories,
+                  'parking':parking,
+                  'mainroad':mainroad,
+                  'guestroom':guestroom,
+                  'basement':basement,
+                  'hotwater':hotwater,
+                  'aircondition':aircondition,
+                  'prefarea':prefarea,
+                  'high_confidence':high_confidence}
+    input_df= pd.DataFrame(data, index=[0])
     return area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence
 
 df=user_input_features()
 
-#st.subheader('User Input Parameters')
-#st.write(df)
+st.subheader('User Input Parameters')
+st.write(input_df)
 
 st.subheader('Prediction')
 st.write(get_dollar_estimate(user_input_features()))
