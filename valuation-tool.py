@@ -132,13 +132,13 @@ def user_input_features():
     bathrooms=st.sidebar.slider('bathrooms', 1, 4, 2)
     stories=st.sidebar.slider('stories',1, 4, 2)
     parking=st.sidebar.slider('parking', 0, 3, 1)
-    mainroad=st.sidebar.slider('mainroad', True, False)
-    guestroom=st.sidebar.slider('guestroom', True, False)
-    basement=st.sidebar.slider('basement', True, False)
-    hotwater=st.sidebar.slider('hotwater', True, False)
-    aircondition=st.sidebar.slider('aircondition', True, False)
-    prefarea=st.sidebar.slider('prefarea', True, False)
-    high_confidence=st.sidebar.slider('high_confidence', True, False)
+    mainroad=st.sidebar.slider('mainroad', True, False, True)
+    guestroom=st.sidebar.slider('guestroom', True, False, True)
+    basement=st.sidebar.slider('basement', True, False, True)
+    hotwater=st.sidebar.slider('hotwater', True, False, True)
+    aircondition=st.sidebar.slider('aircondition', True, False, True)
+    prefarea=st.sidebar.slider('prefarea', True, False, True)
+    high_confidence=st.sidebar.slider('high_confidence', True, False, True)
     input_data = {'area':area,
                   'bathrooms':bathrooms,
                   'stories':stories,
@@ -153,4 +153,7 @@ def user_input_features():
     input_df= pd.DataFrame(data, index=[0])
     return features
 
+df=user_input_features()
 
+st.subheader('User Input Parameters')
+st.write(df)
