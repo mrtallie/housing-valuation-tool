@@ -164,10 +164,10 @@ aircondition=df[8]
 prefarea=df[9]
 high_confidence=df[10]
 
-#get_dollar_estimate(area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence)
+prediction=get_dollar_estimate(area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence)
 
 st.subheader('User Input Parameters')
 st.write()
 
 st.subheader('Prediction')
-st.write(get_dollar_estimate(area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence))
+st.write(prediction)
