@@ -1,11 +1,13 @@
 #Notebook Imports
 from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -209,15 +211,19 @@ mask = np.zeros_like(data.corr(numeric_only=True))
 triangle_indices = np.triu_indices_from(mask)
 mask[triangle_indices] = True
 
-plt.figure(figsize=(14,8))
+plt.figure(figsize=(16,10))
 plt.title('Heatmap of Attributes')
 sns.heatmap(data.corr(numeric_only=True), annot=True, mask=mask)
 st.pyplot(bbox_inches='tight')
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 #distribution of residuals (log prices) - checking for normality
-residual_mean=round(results.resid.mean(), 3)
-residual_skew=round(results.resid.skew(), 3)
-plt.title(f'log price model: residuals skew ({residual_skew}) mean ({residual_mean})')
-sns.distplot(results.resid, color='#ff1744')
+#scatter plot of price vs area
+nox_dis_corr = round(data['price'].corr(data['area']), 3)
+plt.figure(figsize=(16,10))
+plt.scatter(x=data['price'], y=data['area'], alpha=0.6, s=80, color='#6200ea')
+plt.title(f'price vs area (correlation {nox_dis_corr})', fontsize=10)
+plt.xlabel('price', fontsize=10)
+plt.ylabel('area', fontsize=10)
 st.pyplot(bbox_inches='tight')
+st.set_option('deprecation.showPyplotGlobalUse', False)
