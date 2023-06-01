@@ -137,37 +137,37 @@ def user_input_features():
     bathrooms=st.sidebar.slider('bathrooms', 1, 4, 2)
     stories=st.sidebar.slider('stories',1, 4, 2)
     parking=st.sidebar.slider('parking', 0, 3, 1)
-    mainroad=st.sidebar.selectbox('mainroad', options=['True', 'False'])
+    mainroad=st.sidebar.select_slider('mainroad', options=['True', 'False'])
     if mainroad=='True':
         mainroad_bool=True
     else:
         mainroad_bool=False
-    guestroom=st.sidebar.selectbox('guestroom', options=['True', 'False'])
+    guestroom=st.sidebar.select_slider('guestroom', options=['True', 'False'])
     if guestroom=='True':
         guestroom_bool=True
     else:
         guestroom_bool=False
-    basement=st.sidebar.selectbox('basement', options=['True', 'False'])
+    basement=st.sidebar.select_slider('basement', options=['True', 'False'])
     if basement=='True':
         basement_bool=True
     else:
         basement_bool=False
-    hotwater=st.sidebar.selectbox('hotwater', options=['True', 'False'])
+    hotwater=st.sidebar.select_slider('hotwater', options=['True', 'False'])
     if hotwater=='True':
         hotwater_bool=True
     else:
         hotwater_bool=False
-    aircondition=st.sidebar.selectbox('aircondition', options=['True', 'False'])
+    aircondition=st.sidebar.select_slider('aircondition', options=['True', 'False'])
     if aircondition=='True':
         aircondition_bool=True
     else:
         aircondition_bool=False
-    prefarea=st.sidebar.selectbox('prefarea', options=['True', 'False'])
+    prefarea=st.sidebar.select_slider('prefarea', options=['True', 'False'])
     if prefarea=='True':
         prefarea_bool=True
     else:
         prefarea_bool=False
-    high_confidence=st.sidebar.selectbox('high_confidence', options=['True', 'False'])
+    high_confidence=st.sidebar.select_slider('high_confidence', options=['True', 'False'])
     if high_confidence=='True':
         high_confidence_bool=True
     else:
