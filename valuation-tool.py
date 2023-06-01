@@ -138,23 +138,51 @@ def user_input_features():
     stories=st.sidebar.slider('stories',1, 4, 2)
     parking=st.sidebar.slider('parking', 0, 3, 1)
     mainroad=st.sidebar.selectbox('mainroad', options=['True', 'False'])
+    if mainroad=='True':
+        mainroad_bool=True
+    else:
+        mainroad_bool=False
     guestroom=st.sidebar.selectbox('guestroom', options=['True', 'False'])
+    if guestroom=='True':
+        guestroom_bool=True
+    else:
+        guestroom_bool=False
     basement=st.sidebar.selectbox('basement', options=['True', 'False'])
+    if basement=='True':
+        basement_bool=True
+    else:
+        basement_bool=False
     hotwater=st.sidebar.selectbox('hotwater', options=['True', 'False'])
+    if hotwater=='True':
+        hotwater_bool=True
+    else:
+        hotwater_bool=False
     aircondition=st.sidebar.selectbox('aircondition', options=['True', 'False'])
+    if aircondition=='True':
+        aircondition_bool=True
+    else:
+        aircondition_bool=False
     prefarea=st.sidebar.selectbox('prefarea', options=['True', 'False'])
+    if prefarea=='True':
+        prefarea_bool=True
+    else:
+        prefarea_bool=False
     high_confidence=st.sidebar.selectbox('high_confidence', options=['True', 'False'])
+    if high_confidence=='True':
+        high_confidence_bool=True
+    else:
+        high_confidence_bool=False
     input_data = {'area':area,
                   'bathrooms':bathrooms,
                   'stories':stories,
                   'parking':parking,
-                  'mainroad':mainroad,
-                  'guestroom':guestroom,
-                  'basement':basement,
-                  'hotwater':hotwater,
-                  'aircondition':aircondition,
-                  'prefarea':prefarea,
-                  'high_confidence':high_confidence}
+                  'mainroad':mainroad_bool,
+                  'guestroom':guestroom_bool,
+                  'basement':basement_bool,
+                  'hotwater':hotwater_bool,
+                  'aircondition':aircondition_bool,
+                  'prefarea':prefarea_bool,
+                  'high_confidence':high_confidence_bool}
     input_df= pd.DataFrame(data, index=[0])
     return area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence
 
