@@ -210,4 +210,4 @@ mask[triangle_indices] = True
 
 plt.figure(figsize=(14,8))
 sns.heatmap(data.corr(numeric_only=True), annot=True, mask=mask)
-plt.show()
+st.write(fig)
