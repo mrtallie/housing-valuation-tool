@@ -53,36 +53,37 @@ def get_log_estimate(area, bathrooms, stories, parking, mainroad, guestroom,
     property_stats[0][bathrooms_index]=bathrooms
     property_stats[0][stories_index]=stories
     property_stats[0][parking_index]=parking
+
     
     if mainroad:
-        property_stats[0][mainroad_index]=1
+        property_stats[0][mainroad_index]=True
     else:
-        property_stats[0][mainroad_index]=0
+        property_stats[0][mainroad_index]=False
         
     if guestroom:
-        property_stats[0][guestroom_index]=1
+        property_stats[0][guestroom_index]=True
     else:
-        property_stats[0][guestroom_index]=0
+        property_stats[0][guestroom_index]=False
         
     if basement:
-        property_stats[0][basement_index]=1
+        property_stats[0][basement_index]=True
     else:
-        property_stats[0][basement_index]=0
+        property_stats[0][basement_index]=False
         
     if hotwater:
-        property_stats[0][hotwaterheating_index]=1
+        property_stats[0][hotwaterheating_index]=True
     else:
-        property_stats[0][hotwaterheating_index]=0
+        property_stats[0][hotwaterheating_index]=False
         
     if aircondition:
-        property_stats[0][airconditioning_index]=1
+        property_stats[0][airconditioning_index]=True
     else:
-        property_stats[0][airconditioning_index]=0
+        property_stats[0][airconditioning_index]=False
         
     if prefarea:
-        property_stats[0][prefarea_index]=1
+        property_stats[0][prefarea_index]=True
     else:
-        property_stats[0][prefarea_index]=0
+        property_stats[0][prefarea_index]=False
     
     #make prediction
     log_estimate=regression.predict(property_stats)[0][0]
@@ -96,6 +97,8 @@ def get_log_estimate(area, bathrooms, stories, parking, mainroad, guestroom,
         upper_bound=log_estimate+RMSE
         lower_bound=log_estimate-RMSE
         interval=68
+
+    print(interval)
     return log_estimate, upper_bound, lower_bound, interval
 	
 	
@@ -116,10 +119,6 @@ def get_dollar_estimate(area, bathrooms, stories, parking, mainroad, guestroom, 
     rounded_high=np.around(dollar_high, -3)
     rounded_low=np.around(dollar_low, -3)
 
-    if high_confidence==True:
-        confidence=95
-    else:
-        confidence=68
 
     prediction=f'The estimated property value is {rounded_estimate}.\n At {confidence}% confidence the valuation range is\n USD {rounded_low} at the low end to USD {rounded_high} at the high end.'
 
@@ -200,7 +199,7 @@ aircondition=df[8]
 prefarea=df[9]
 high_confidence=df[10]
 
-#prediction=get_dollar_estimate(area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence)
+prediction=get_dollar_estimate(area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence)
 
 st.subheader('User Input Parameters')
 st.write(area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence)
@@ -209,8 +208,5 @@ st.subheader('Prediction')
 st.write((get_dollar_estimate(area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence)))
 
 
+print(prediction)
 print(high_confidence)
-#print(aircondition)
-
-
-area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence
