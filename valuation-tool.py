@@ -8,8 +8,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import statsmodels.api as sm
 from statsmodels.stats.outliers_influence import variance_inflation_factor
-%matplotlib inline
-
 
 import warnings
 warnings.filterwarnings('ignore')
