@@ -56,34 +56,34 @@ def get_log_estimate(area, bathrooms, stories, parking, mainroad, guestroom,
 
     
     if mainroad:
-        property_stats[0][mainroad_index]=True
+        property_stats[0][mainroad_index]=1
     else:
-        property_stats[0][mainroad_index]=False
+        property_stats[0][mainroad_index]=0
         
     if guestroom:
-        property_stats[0][guestroom_index]=True
+        property_stats[0][guestroom_index]=1
     else:
-        property_stats[0][guestroom_index]=False
+        property_stats[0][guestroom_index]=0
         
     if basement:
-        property_stats[0][basement_index]=True
+        property_stats[0][basement_index]=1
     else:
-        property_stats[0][basement_index]=False
+        property_stats[0][basement_index]=0
         
     if hotwater:
-        property_stats[0][hotwaterheating_index]=True
+        property_stats[0][hotwaterheating_index]=1
     else:
-        property_stats[0][hotwaterheating_index]=False
+        property_stats[0][hotwaterheating_index]=0
         
     if aircondition:
-        property_stats[0][airconditioning_index]=True
+        property_stats[0][airconditioning_index]=1
     else:
-        property_stats[0][airconditioning_index]=False
+        property_stats[0][airconditioning_index]=0
         
     if prefarea:
-        property_stats[0][prefarea_index]=True
+        property_stats[0][prefarea_index]=1
     else:
-        property_stats[0][prefarea_index]=False
+        property_stats[0][prefarea_index]=0
     
     #make prediction
     log_estimate=regression.predict(property_stats)[0][0]
@@ -138,39 +138,39 @@ def user_input_features():
     parking=st.sidebar.slider('parking', 0, 3, 1)
     mainroad=st.sidebar.select_slider('mainroad', options=['True', 'False'])
     if mainroad=='True':
-        mainroad_bool=1
+        mainroad_bool=True
     else:
-        mainroad_bool=0
+        mainroad_bool=False
     guestroom=st.sidebar.select_slider('guestroom', options=['True', 'False'])
     if guestroom=='True':
-        guestroom_bool=1
+        guestroom_bool=True
     else:
-        guestroom_bool=0
+        guestroom_bool=False
     basement=st.sidebar.select_slider('basement', options=['True', 'False'])
     if basement=='True':
-        basement_bool=1
+        basement_bool=True
     else:
-        basement_bool=0
+        basement_bool=False
     hotwater=st.sidebar.select_slider('hotwater', options=['True', 'False'])
     if hotwater=='True':
-        hotwater_bool=1
+        hotwater_bool=True
     else:
-        hotwater_bool=0
+        hotwater_bool=False
     aircondition=st.sidebar.select_slider('aircondition', options=['True', 'False'])
     if aircondition=='True':
-        aircondition_bool=1
+        aircondition_bool=True
     else:
-        aircondition_bool=0
+        aircondition_bool=False
     prefarea=st.sidebar.select_slider('prefarea', options=['True', 'False'])
     if prefarea=='True':
-        prefarea_bool=1
+        prefarea_bool=True
     else:
-        prefarea_bool=0
+        prefarea_bool=False
     high_confidence=st.sidebar.select_slider('high_confidence', options=['True', 'False'])
     if high_confidence=='True':
-        high_confidence_bool=1
+        high_confidence_bool=True
     else:
-        high_confidence_bool=0
+        high_confidence_bool=False
     input_data = {'area':area,
                   'bathrooms':bathrooms,
                   'stories':stories,
