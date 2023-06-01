@@ -227,3 +227,10 @@ plt.xlabel('price', fontsize=10)
 plt.ylabel('area', fontsize=10)
 st.pyplot(bbox_inches='tight')
 st.set_option('deprecation.showPyplotGlobalUse', False)
+
+#log price with skew
+y_log=np.log(data['price'])
+sns.distplot(y_log)
+plt.title(f'Log price with skew {y_log.skew()}')
+st.pyplot(bbox_inches='tight')
+st.set_option('deprecation.showPyplotGlobalUse', False)
