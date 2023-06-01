@@ -46,8 +46,8 @@ fitted_values=regression.predict(features)
 MSE=mean_squared_error(target,fitted_values)
 RMSE=np.sqrt(MSE)
 
-def get_log_estimate(area, bathrooms, stories, parking, mainroad=True, guestroom=False, 
-                     basement=True, hotwater=True, aircondition=True, prefarea=False, high_confidence=True):
+def get_log_estimate(area, bathrooms, stories, parking, mainroad, guestroom, 
+                     basement, hotwater, aircondition, prefarea, high_confidence):
     #configure property
     property_stats[0][area_index]=area
     property_stats[0][bathrooms_index]=bathrooms
@@ -211,3 +211,6 @@ st.write((get_dollar_estimate(area, bathrooms, stories, parking, mainroad, guest
 
 print(high_confidence)
 #print(aircondition)
+
+
+area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence
