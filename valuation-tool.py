@@ -214,3 +214,10 @@ plt.title('Heatmap of Attributes')
 sns.heatmap(data.corr(numeric_only=True), annot=True, mask=mask)
 st.pyplot(bbox_inches='tight')
 st.set_option('deprecation.showPyplotGlobalUse', False)
+
+#distribution of residuals (log prices) - checking for normality
+residual_mean=round(results.resid.mean(), 3)
+residual_skew=round(results.resid.skew(), 3)
+plt.title(f'log price model: residuals skew ({residual_skew}) mean ({residual_mean})')
+sns.distplot(results.resid, color='#ff1744')
+st.pyplot(bbox_inches='tight')
