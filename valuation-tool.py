@@ -195,7 +195,7 @@ prediction=get_dollar_estimate(df.area, df.bathrooms, df.stories, df.parking, df
 print(prediction)
 
 st.subheader('User Input Parameters')
-st.write('area=', + df.area, + 'bathrooms=', + df.bathrooms, + 'stories=', + df.stories, + 'parking=', + df.parking, + 'mainroad=', + df.mainroad)
+st.write(df.area, df.bathrooms)
 
 
 #st.subheader('Prediction')
