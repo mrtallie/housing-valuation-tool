@@ -55,32 +55,32 @@ def get_log_estimate(area, bathrooms, stories, parking, mainroad, guestroom,
     property_stats[0][parking_index]=parking
 
     
-    if mainroad:
+    if mainroad.any()==1:
         property_stats[0][mainroad_index]=1
     else:
         property_stats[0][mainroad_index]=0
         
-    if guestroom:
+    if guestroom.any():
         property_stats[0][guestroom_index]=1
     else:
         property_stats[0][guestroom_index]=0
         
-    if basement:
+    if basement.any():
         property_stats[0][basement_index]=1
     else:
         property_stats[0][basement_index]=0
         
-    if hotwater:
+    if hotwater.any():
         property_stats[0][hotwaterheating_index]=1
     else:
         property_stats[0][hotwaterheating_index]=0
         
-    if aircondition:
+    if aircondition.any():
         property_stats[0][airconditioning_index]=1
     else:
         property_stats[0][airconditioning_index]=0
         
-    if prefarea:
+    if prefarea.any():
         property_stats[0][prefarea_index]=1
     else:
         property_stats[0][prefarea_index]=0
@@ -89,7 +89,7 @@ def get_log_estimate(area, bathrooms, stories, parking, mainroad, guestroom,
     log_estimate=regression.predict(property_stats)[0][0]
     
     #range
-    if high_confidence:
+    if high_confidence.any():
         upper_bound=log_estimate+2*RMSE
         lower_bound=log_estimate-2*RMSE
         interval=95
@@ -182,7 +182,7 @@ def user_input_features():
                   'aircondition':aircondition_bool,
                   'prefarea':prefarea_bool,
                   'high_confidence':high_confidence_bool}
-    input_df=pd.DataFrame(data, index=[0])
+    input_df=pd.DataFrame(input_data, index=[0])
     return input_df
 
 
@@ -190,7 +190,9 @@ df=user_input_features()
 
 print(df)
 
-#prediction=get_dollar_estimate(df.area, df.bathrooms, df.stories, df.parking, df.mainroad, df.guestroom, df.basement, df.hotwaterheating, df.airconditioning, df.prefarea, df.high_confidence)
+prediction=get_dollar_estimate(df.area, df.bathrooms, df.stories, df.parking, df.mainroad, df.guestroom, df.basement, df.hotwater, df.aircondition, df.prefarea, df.high_confidence)
+
+print(prediction)
 
 st.subheader('User Input Parameters')
 st.write(df)
