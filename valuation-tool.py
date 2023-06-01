@@ -204,3 +204,10 @@ st.write(prediction)
 
 #visual aids
 #create a heat map
+mask = np.zeros_like(data.corr(numeric_only=True))
+triangle_indices = np.triu_indices_from(mask)
+mask[triangle_indices] = True
+
+plt.figure(figsize=(14,8))
+sns.heatmap(data.corr(numeric_only=True), annot=True, mask=mask)
+plt.show()
