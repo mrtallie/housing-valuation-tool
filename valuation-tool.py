@@ -6,8 +6,6 @@ import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
-import statsmodels.api as sm
-from statsmodels.stats.outliers_influence import variance_inflation_factor
 
 import warnings
 warnings.filterwarnings('ignore')
