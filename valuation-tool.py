@@ -4,6 +4,11 @@ from sklearn.linear_model import LinearRegression
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import streamlit as st
+import matplotlib.pyplot as plt
+import seaborn as sns
+import statsmodels.api as sm
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+%matplotlib inline
 
 
 import warnings
@@ -200,3 +205,13 @@ print(prediction)
 
 st.subheader('Prediction')
 st.write(prediction)
+
+#visual aids
+#create a heat map
+st.header('Visualization of model')
+mask = np.zeros_like(data.corr(numeric_only=True))
+triangle_indices = np.triu_indices_from(mask)
+mask[triangle_indices] = True
+plt.figure(figsize=(14,8))
+sns.heatmap(data.corr(numeric_only=True), annot=True, mask=mask)
+plt.show()
