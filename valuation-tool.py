@@ -29,19 +29,20 @@ log_prices=np.log(data['price'])
 target=pd.DataFrame(log_prices, columns=['price'])
 
 area_index=0
-bathrooms_index=1
-stories_index=2
-mainroad_index=3
-guestroom_index=4
-basement_index=5
-hotwaterheating_index=6
-airconditioning_index=7
-parking_index=8
-prefarea_index=9
+bedrooms_index=1
+bathrooms_index=2
+stories_index=3
+mainroad_index=4
+guestroom_index=5
+basement_index=6
+hotwaterheating_index=7
+airconditioning_index=8
+parking_index=9
+prefarea_index=0
 
-#property_stats=np.ndarray(shape=(1,11))
-#property_stats[0][price_index]=0.02
+
 property_stats=features.mean().values.reshape(1,12)
+
 
 regression=LinearRegression().fit(features, target)
 fitted_values=regression.predict(features)
@@ -52,6 +53,7 @@ RMSE=np.sqrt(MSE)
 def get_log_estimate(bedrooms, area, bathrooms, stories, parking, mainroad, guestroom, 
                      basement, hotwater, aircondition, prefarea, high_confidence):
     #configure property
+    property_stats[0][bedrooms_index]=bedrooms
     property_stats[0][area_index]=area
     property_stats[0][bathrooms_index]=bathrooms
     property_stats[0][stories_index]=stories
