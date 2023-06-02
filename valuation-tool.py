@@ -40,10 +40,10 @@ prefarea_index=9
 
 #property_stats=np.ndarray(shape=(1,11))
 #property_stats[0][price_index]=0.02
-property_stats=features.mean().values.reshape(1,10)
+property_stats=data.mean().values.reshape(1,12)
 
-regression=LinearRegression().fit(features, target)
-fitted_values=regression.predict(features)
+regression=LinearRegression().fit(data, target)
+fitted_values=regression.predict(data)
 
 MSE=mean_squared_error(target,fitted_values)
 RMSE=np.sqrt(MSE)
