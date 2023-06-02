@@ -54,6 +54,7 @@ def get_log_estimate(area, bedrooms, bathrooms, stories, parking, mainroad, gues
                      basement, hotwater, aircondition, prefarea, high_confidence):
     #configure property
     property_stats[0][area_index]=area
+    property_stats[0][bedrooms_index]=bedrooms
     property_stats[0][bathrooms_index]=bathrooms
     property_stats[0][stories_index]=stories
     property_stats[0][parking_index]=parking
