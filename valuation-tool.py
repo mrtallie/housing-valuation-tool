@@ -7,8 +7,6 @@ import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
-
-
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -231,5 +229,3 @@ plt.xlabel('price', fontsize=10)
 plt.ylabel('area', fontsize=10)
 st.pyplot(bbox_inches='tight')
 st.set_option('deprecation.showPyplotGlobalUse', False)
-
-#log price with skew
