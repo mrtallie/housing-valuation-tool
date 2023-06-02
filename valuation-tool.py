@@ -38,7 +38,7 @@ basement_index=6
 hotwaterheating_index=7
 airconditioning_index=8
 parking_index=9
-prefarea_index=0
+prefarea_index=10
 
 
 property_stats=features.mean().values.reshape(1,12)
@@ -194,6 +194,7 @@ def user_input_features():
 
 
 df=user_input_features()
+
 
 print(df)
 
