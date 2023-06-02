@@ -105,7 +105,7 @@ def get_log_estimate(bedrooms, area, bathrooms, stories, parking, mainroad, gues
 	
 	
 
-def get_dollar_estimate(area, bathrooms, stories, parking, mainroad, guestroom, basement, 
+def get_dollar_estimate(bedrooms, area, bathrooms, stories, parking, mainroad, guestroom, basement, 
                         hotwater, aircondition, prefarea, high_confidence):
     
     
