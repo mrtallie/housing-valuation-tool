@@ -23,25 +23,26 @@ data['hotwaterheating']=pd.get_dummies(data['hotwaterheating'], drop_first=True)
 data['airconditioning']=pd.get_dummies(data['airconditioning'], drop_first=True)
 data['guestroom']=pd.get_dummies(data['guestroom'], drop_first=True)
 data=data.drop('furnishingstatus', axis='columns')
-features=data.drop(['bedrooms', 'price'], axis=1)
+features=data.drop(['price'], axis=1)
 
 log_prices=np.log(data['price'])
 target=pd.DataFrame(log_prices, columns=['price'])
 
 area_index=0
-bathrooms_index=1
-stories_index=2
-mainroad_index=3
-guestroom_index=4
-basement_index=5
-hotwaterheating_index=6
-airconditioning_index=7
-parking_index=8
-prefarea_index=9
+bedrooms_index=1
+bathrooms_index=2
+stories_index=3
+mainroad_index=4
+guestroom_index=5
+basement_index=6
+hotwaterheating_index=7
+airconditioning_index=8
+parking_index=9
+prefarea_index=10
 
 #property_stats=np.ndarray(shape=(1,11))
 #property_stats[0][price_index]=0.02
-property_stats=features.mean().values.reshape(1,10)
+property_stats=features.mean().values.reshape(1,11)
 
 regression=LinearRegression().fit(features, target)
 fitted_values=regression.predict(features)
@@ -49,7 +50,7 @@ fitted_values=regression.predict(features)
 MSE=mean_squared_error(target,fitted_values)
 RMSE=np.sqrt(MSE)
 
-def get_log_estimate(area, bathrooms, stories, parking, mainroad, guestroom, 
+def get_log_estimate(area, bedrooms, bathrooms, stories, parking, mainroad, guestroom, 
                      basement, hotwater, aircondition, prefarea, high_confidence):
     #configure property
     property_stats[0][area_index]=area
@@ -106,11 +107,11 @@ def get_log_estimate(area, bathrooms, stories, parking, mainroad, guestroom,
 	
 	
 
-def get_dollar_estimate(area, bathrooms, stories, parking, mainroad, guestroom, basement, 
+def get_dollar_estimate(area, bedrooms, bathrooms, stories, parking, mainroad, guestroom, basement, 
                         hotwater, aircondition, prefarea, high_confidence):
     
     
-    log_estimate, upper, lower, confidence = get_log_estimate(area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence)
+    log_estimate, upper, lower, confidence = get_log_estimate(area, bedrooms, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence)
 
     #convert from log
     dollar_estimate=np.e**log_estimate / 10
@@ -136,6 +137,7 @@ st.sidebar.header('User Input Parameters')
 
 def user_input_features():
     area=st.sidebar.slider('area', 1650, 16200, 7275)
+    bedrooms=st.sidebar.slider('bedrooms', 1, 6, 3)
     bathrooms=st.sidebar.slider('bathrooms', 1, 4, 2)
     stories=st.sidebar.slider('stories',1, 4, 2)
     parking=st.sidebar.slider('parking', 0, 3, 1)
@@ -175,6 +177,7 @@ def user_input_features():
     else:
         high_confidence_bool=0
     input_data = {'area':area,
+                  'bedrooms':bedrooms,
                   'bathrooms':bathrooms,
                   'stories':stories,
                   'parking':parking,
@@ -193,7 +196,7 @@ df=user_input_features()
 
 print(df)
 
-prediction=get_dollar_estimate(df.area, df.bathrooms, df.stories, df.parking, df.mainroad, df.guestroom, df.basement, df.hotwater, df.aircondition, df.prefarea, df.high_confidence)
+prediction=get_dollar_estimate(df.area, df.bedrooms, df.bathrooms, df.stories, df.parking, df.mainroad, df.guestroom, df.basement, df.hotwater, df.aircondition, df.prefarea, df.high_confidence)
 
 print(prediction)
 
