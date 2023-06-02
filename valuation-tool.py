@@ -132,7 +132,7 @@ def get_dollar_estimate(area, bedrooms, bathrooms, stories, parking, mainroad, g
 
 #print(get_dollar_estimate(3000, 3, 3, 2))
 
-st.title('House valuation tool')
+st.title('House valuation tool for the North East Region')
 
 st.sidebar.header('User Input Parameters')
 
@@ -210,7 +210,7 @@ st.write(prediction)
 
 #visual aids
 #create a heat map
-st.subheader('Visulization of prediction model')
+st.subheader('Visualization of prediction model')
 mask = np.zeros_like(data.corr(numeric_only=True))
 triangle_indices = np.triu_indices_from(mask)
 mask[triangle_indices] = True
