@@ -23,6 +23,7 @@ data['hotwaterheating']=pd.get_dummies(data['hotwaterheating'], drop_first=True)
 data['airconditioning']=pd.get_dummies(data['airconditioning'], drop_first=True)
 data['guestroom']=pd.get_dummies(data['guestroom'], drop_first=True)
 data=data.drop('furnishingstatus', axis='columns')
+features=data
 
 log_prices=np.log(data['price'])
 target=pd.DataFrame(log_prices, columns=['price'])
@@ -40,10 +41,10 @@ prefarea_index=9
 
 #property_stats=np.ndarray(shape=(1,11))
 #property_stats[0][price_index]=0.02
-property_stats=data.mean().values.reshape(1,12)
+property_stats=features.mean().values.reshape(1,12)
 
-regression=LinearRegression().fit(data, target)
-fitted_values=regression.predict(data)
+regression=LinearRegression().fit(features, target)
+fitted_values=regression.predict(features)
 
 MSE=mean_squared_error(target,fitted_values)
 RMSE=np.sqrt(MSE)
