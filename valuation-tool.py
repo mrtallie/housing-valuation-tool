@@ -23,7 +23,6 @@ data['hotwaterheating']=pd.get_dummies(data['hotwaterheating'], drop_first=True)
 data['airconditioning']=pd.get_dummies(data['airconditioning'], drop_first=True)
 data['guestroom']=pd.get_dummies(data['guestroom'], drop_first=True)
 data=data.drop('furnishingstatus', axis='columns')
-features=data.drop(['bedrooms', 'price'], axis=1)
 
 log_prices=np.log(data['price'])
 target=pd.DataFrame(log_prices, columns=['price'])
@@ -49,7 +48,7 @@ fitted_values=regression.predict(features)
 MSE=mean_squared_error(target,fitted_values)
 RMSE=np.sqrt(MSE)
 
-def get_log_estimate(area, bathrooms, stories, parking, mainroad, guestroom, 
+def get_log_estimate(bedrooms, area, bathrooms, stories, parking, mainroad, guestroom, 
                      basement, hotwater, aircondition, prefarea, high_confidence):
     #configure property
     property_stats[0][area_index]=area
@@ -110,7 +109,7 @@ def get_dollar_estimate(area, bathrooms, stories, parking, mainroad, guestroom, 
                         hotwater, aircondition, prefarea, high_confidence):
     
     
-    log_estimate, upper, lower, confidence = get_log_estimate(area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence)
+    log_estimate, upper, lower, confidence = get_log_estimate(bedrooms, area, bathrooms, stories, parking, mainroad, guestroom, basement, hotwater, aircondition, prefarea, high_confidence)
 
     #convert from log
     dollar_estimate=np.e**log_estimate / 10
@@ -135,6 +134,7 @@ st.title('House valuation tool')
 st.sidebar.header('User Input Parameters')
 
 def user_input_features():
+    bedrooms=st.sidebar.slider('bedrooms', 1, 6, 3)
     area=st.sidebar.slider('area', 1650, 16200, 7275)
     bathrooms=st.sidebar.slider('bathrooms', 1, 4, 2)
     stories=st.sidebar.slider('stories',1, 4, 2)
@@ -174,7 +174,8 @@ def user_input_features():
         high_confidence_bool=1
     else:
         high_confidence_bool=0
-    input_data = {'area':area,
+    input_data = {'bedrooms':bedrooms,
+                  'area':area,
                   'bathrooms':bathrooms,
                   'stories':stories,
                   'parking':parking,
@@ -193,7 +194,7 @@ df=user_input_features()
 
 print(df)
 
-prediction=get_dollar_estimate(df.area, df.bathrooms, df.stories, df.parking, df.mainroad, df.guestroom, df.basement, df.hotwater, df.aircondition, df.prefarea, df.high_confidence)
+prediction=get_dollar_estimate(df.bedrooms, df.area, df.bathrooms, df.stories, df.parking, df.mainroad, df.guestroom, df.basement, df.hotwater, df.aircondition, df.prefarea, df.high_confidence)
 
 print(prediction)
 
